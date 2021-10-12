@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 8px;
+            border: 1px solid rgb(255, 174, 0);
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var detailsObject = JSON.parse(localStorage.getItem('personalDetails'))
+            document.getElementById('first').innerHTML = detailsObject.firstName;
+            document.getElementById('second').innerHTML = detailsObject.lastName;
+            document.getElementById('third').innerHTML = detailsObject.dateOfBirth;
+            document.getElementById('fourth').innerHTML = detailsObject.email;
+            document.getElementById('fifth').innerHTML = detailsObject.address1;
+            document.getElementById('sixth').innerHTML = detailsObject.address2;
+            document.getElementById('seventh').innerHTML = detailsObject.country;
+            document.getElementById('eighth').innerHTML = detailsObject.states;
+            document.getElementById('nineth').innerHTML = detailsObject.number;
+        };
+
+    </script>
+</head>
+
+<body>
+    <table id="tab">
+        <caption><b>Personal Details</b></caption>
+        <colgroup>
+            <col span="1" class="fNameClass">
+            <col span="1" class="lNameClass">
+            <col span="1" class="dobClass">
+            <col span="1" class="emailClass">
+            <col span="1" class="address1Class">
+            <col span="1" class="address2Class">
+            <col span="1" class="countryClass">
+            <col span="1" class="stateClass">
+            <col span="1" class="mobileNumberClass">
+        </colgroup>
+        <tr>
+            <th class="heading">FName</th>
+            <th class="heading">LName</th>
+            <th class="heading">Dob</th>
+            <th class="heading">Email</th>
+            <th class="heading">Address1</th>
+            <th class="heading">Address2</th>
+            <th class="heading">Country</th>
+            <th class="heading">State</th>
+            <th class="heading">Mobile Number</th>
+        </tr>
+        <tr>
+            <td id="first"></td>
+            <td id="second"></td>
+            <td id="third"></td>
+            <td id="fourth"></td>
+            <td id="fifth"></td>
+            <td id="sixth"></td>
+            <td id="seventh"></td>
+            <td id="eighth"></td>
+            <td id="nineth"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

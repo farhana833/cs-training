@@ -8,22 +8,21 @@
         }
     </style>
     <script>
-        console(today)
         function validateForm() {
-            console.log('Entered')
             var fName = document.getElementById('firstName').value
             var lName = document.getElementById('lastName').value
+            var dateOfBirth = document.getElementById('dateOfBirth').value
             var email = document.getElementById('email').value
             var address1 = document.getElementById('address1').value
             var mobileNumber = document.getElementById('number').value
             var address2 = document.getElementById('address2').value
             var fnameValidation = /^[a-zA-Z]{2,30}$/
             var lnameValidation = /^[a-zA-Z]{0,30}$/
+            var today = new Date()
+            var dob = new Date(dateOfBirth)
             var emailValidation =/^[a-zA-Z0-9][/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/
             var mobileNumberValidation =/^[6,7,8,9]{1}[0-9]{9}$/
             if (!fnameValidation.test(fName)) {
-               console.log(fName.length)
-
                 alert('Enter valid first name ')
                 return false
             }
@@ -31,16 +30,16 @@
                 alert('Enter valid last name ')
                 return false
             }
-            else if(!emailValidation.test(email)) {
-                alert('Enter valid Email id ')
+            else if(dob > today) {
+                alert('Select valid date of birth')
                 return false
             }
-            else if(address2 == "") {
-                alert('Enter address2')
+            else if(!emailValidation.test(email)) {
+                alert('Enter valid email Id ')
                 return false
             }
             else if(!mobileNumberValidation.test(mobileNumber)) {
-                alert('Enter valid Mobile number')
+                alert('Enter valid mobile number')
                 return false
             }
             else {
@@ -66,9 +65,7 @@
                     states: state.value,
                     number: mobileNumber.value
                 }
-                console.log(personalDetails)
                 window.localStorage.setItem("personalDetails", JSON.stringify(personalDetails))
-                console.log('Pass')
                 return true      
             }
         }
@@ -83,25 +80,23 @@
         <input type="text" id="lastName" maxlength="20" ><br>
         <label>3. Date of birth</label>
         <input type="date" id="dateOfBirth" required><br>
-        <label>4. Age</label>
-        <input type="number" name="age" min="1" max="100"><br>
-        <label>5. E-mail</label>
+        <label>4. E-mail</label>
         <input type="email" id="email" required><br>
-        <span>7. Gender</span><br>
+        <span>5. Gender</span> <br>
         <label>i) Male</label>
         <input type="radio" id="gender" name="gender" value="male" checked><br>
         <label>ii) Female</label>
         <input type="radio" id="gender" name="gender" value="female"><br>
         <label>iii) Others</label>
         <input type="radio" id="gender" name="gender" value="others"><br>
-        <label>8. Address line1</label>
-        <input type="text" id="address1" maxlength="40" required><br>
-        <label>9. Address line 2</label>
-        <input type="text" id="address2" maxlength="40"><br>
-        <label>10. Country</label>
-        <input type="text" id="country" minlength="3"><br>
-        <label>11. State</label>
-        <select id="states" name="states">
+        <label>6. Address line1</label>
+        <input type="text" id="address1"  required><br>
+        <label>7. Address line 2</label>
+        <input type="text" id="address2" ><br>
+        <label>8. Country</label>
+        <input type="text" id="country" minlength="3" required><br>
+        <label>9. State</label>
+        <select id="states" name="states" required> 
             <option value="">Choose State Name</option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Assam">Assam</option>
@@ -120,12 +115,12 @@
             <option value="Tamil Nadu" selected>Tamil Nadu</option>
             <option value="">Others</option>
         </select><br>
-        <label>12. Phone number</label>
-        <input type="tel" id="number"><br>
-        <label>13. LinkedIn profile</label>
-        <input type="url" name="LinkedInprofile"><br>
-        <label>14. Resume</label>
-        <input type="file" name="resume" accept=".pdf, .doc, .docx"><br>
+        <label>10. Phone number</label>
+        <input type="tel" id="number" required><br>
+        <label>11. LinkedIn profile</label>
+        <input type="url" name="LinkedInprofile" ><br>
+        <label>12. Resume </label>
+        <input type="file" name="resume" accept=".pdf, .doc, .docx" required><br>
         <input type="submit" value="Submit">
     </form>
 </body>
