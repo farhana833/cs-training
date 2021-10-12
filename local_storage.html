@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: pink;
+            color: black;
+        }
+    </style>
+    <script>
+        console(today)
+        function validateForm() {
+            console.log('Entered')
+            var fName = document.getElementById('firstName').value
+            var lName = document.getElementById('lastName').value
+            var email = document.getElementById('email').value
+            var address1 = document.getElementById('address1').value
+            var mobileNumber = document.getElementById('number').value
+            var address2 = document.getElementById('address2').value
+            var fnameValidation = /^[a-zA-Z]{2,30}$/
+            var lnameValidation = /^[a-zA-Z]{0,30}$/
+            var emailValidation =/^[a-zA-Z0-9][/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/
+            var mobileNumberValidation =/^[6,7,8,9]{1}[0-9]{9}$/
+            if (!fnameValidation.test(fName)) {
+               console.log(fName.length)
+
+                alert('Enter valid first name ')
+                return false
+            }
+            else if (!lnameValidation.test(lName)) {
+                alert('Enter valid last name ')
+                return false
+            }
+            else if(!emailValidation.test(email)) {
+                alert('Enter valid Email id ')
+                return false
+            }
+            else if(address2 == "") {
+                alert('Enter address2')
+                return false
+            }
+            else if(!mobileNumberValidation.test(mobileNumber)) {
+                alert('Enter valid Mobile number')
+                return false
+            }
+            else {
+                var fName = document.getElementById('firstName')
+                var lName = document.getElementById('lastName')
+                var dob = document.getElementById('dateOfBirth')
+                var email = document.getElementById('email')
+                var gender = document.getElementById('gender')
+                var address1 = document.getElementById('address1')
+                var address2 = document.getElementById('address2')
+                var country = document.getElementById('country')
+                var state = document.getElementById('states')
+                var mobileNumber = document.getElementById('number')
+                var personalDetails = {
+                    firstName: fName.value,
+                    lastName: lName.value,
+                    dateOfBirth: dob.value,
+                    email: email.value,
+                    gender: gender.value,
+                    address1: address1.value,
+                    address2: address2.value,
+                    country: country.value,
+                    states: state.value,
+                    number: mobileNumber.value
+                }
+                console.log(personalDetails)
+                window.localStorage.setItem("personalDetails", JSON.stringify(personalDetails))
+                console.log('Pass')
+                return true      
+            }
+        }
+    </script>
+</head>
+<body>
+    <strong>Registration form</strong>
+    <form action="table.html" onsubmit="return validateForm()" method="POST" >
+        <label>1. First Name</label>
+        <input type="text" id="firstName" required><br>
+        <label>2. Last Name</label>
+        <input type="text" id="lastName" maxlength="20" ><br>
+        <label>3. Date of birth</label>
+        <input type="date" id="dateOfBirth" required><br>
+        <label>4. Age</label>
+        <input type="number" name="age" min="1" max="100"><br>
+        <label>5. E-mail</label>
+        <input type="email" id="email" required><br>
+        <span>7. Gender</span><br>
+        <label>i) Male</label>
+        <input type="radio" id="gender" name="gender" value="male" checked><br>
+        <label>ii) Female</label>
+        <input type="radio" id="gender" name="gender" value="female"><br>
+        <label>iii) Others</label>
+        <input type="radio" id="gender" name="gender" value="others"><br>
+        <label>8. Address line1</label>
+        <input type="text" id="address1" maxlength="40" required><br>
+        <label>9. Address line 2</label>
+        <input type="text" id="address2" maxlength="40"><br>
+        <label>10. Country</label>
+        <input type="text" id="country" minlength="3"><br>
+        <label>11. State</label>
+        <select id="states" name="states">
+            <option value="">Choose State Name</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">KeralaKerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Tamil Nadu" selected>Tamil Nadu</option>
+            <option value="">Others</option>
+        </select><br>
+        <label>12. Phone number</label>
+        <input type="tel" id="number"><br>
+        <label>13. LinkedIn profile</label>
+        <input type="url" name="LinkedInprofile"><br>
+        <label>14. Resume</label>
+        <input type="file" name="resume" accept=".pdf, .doc, .docx"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
